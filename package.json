@@ -1,0 +1,30 @@
+{
+  "name": "local-task-marketplace",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Production-grade local task marketplace monorepo",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev --workspace=@marketplace/api",
+    "dev:mobile": "npm run start --workspace=@marketplace/mobile",
+    "android": "npm run android --workspace=@marketplace/mobile",
+    "build:types": "npm run build --workspace=@marketplace/types",
+    "build:api": "npm run build --workspace=@marketplace/api",
+    "build": "npm run build:types && npm run build:api",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,json,md}\"",
+    "clean": "rm -rf node_modules apps/*/node_modules packages/*/node_modules apps/*/dist packages/*/dist"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}
